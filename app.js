@@ -9,10 +9,16 @@ app.use(express.json());
 
 // ------------- STATIC FILES
 app.use(express.static(path.join(__dirname, "/dist/angularExpress")));
+app.use(express.static(path.join(__dirname, "/src/app/components/mainpage")));
+
 
 // ------------- PAGE ROUTES
 app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname + '/dist/angularExpress/index.html'));
+});
+
+app.get('/main', (req, res) => {
+  res.sendFile(path.join(__dirname + '/src/app/components/mainpage/mainpage.component.html'));
 });
 
 
