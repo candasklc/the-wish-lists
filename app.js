@@ -5,13 +5,14 @@ const PORT = process.env.PORT || 3000;
 const db = require('./db');
 const tableName = 'wishes';
  
-// ------------- STATIC FILES
-app.use('/html', express.static('./dist/angularExpress'));
 app.use(express.json());
+
+// ------------- STATIC FILES
+app.use(express.static(path.join(__dirname, "/dist/angularExpress")));
 
 // ------------- PAGE ROUTES
 app.get('/', (req, res) => {
-  res.sendFile('index.html', {root: 'dist/angular-app-heroku/'});
+  res.sendFile(path.join(__dirname + '/dist/angularExpress/index.html'));
 });
 
 
