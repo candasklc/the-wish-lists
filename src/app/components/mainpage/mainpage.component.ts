@@ -13,12 +13,13 @@ export class MainpageComponent implements OnInit {
   constructor(private http: RequestsService) { }
 
   ngOnInit(): void {
-    this.fetchLists();
-    console.log(this.wishList);
   }
 
   fetchLists(): void{
-    this.wishList = this.http.getAllWishes();
+    this.http.getAllWishes().subscribe(data => {
+      this.wishList = data;
+    });
+    console.log('clicked');
   }
 
 }

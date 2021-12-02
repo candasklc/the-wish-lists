@@ -8,6 +8,9 @@ import { Wish } from 'src/app/interfaces/wish';
   providedIn: 'root'
 })
 export class RequestsService {
+  options = {
+    Headers
+  }
   
 
   constructor(private http: HttpClient) { }
