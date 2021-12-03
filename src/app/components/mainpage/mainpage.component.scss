@@ -1,0 +1,11 @@
+.container{
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .list-wraper{
+        width: 500px;
+        min-height: 500px;
+        background-color: whitesmoke;
+    }
+}

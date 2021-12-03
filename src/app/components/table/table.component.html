@@ -1,18 +1,15 @@
-<table class="table table-striped">
-    <thead>
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">Country</th>
-      <th scope="col">Area</th>
-      <th scope="col">Population</th>
-    </tr>
-    </thead>
+<div class="wraper">
+  <table class="table table-striped">
     <tbody>
-    <tr>
-      <th>
-      <td></td>
-      <td></td>
-      <td></td>
-    </tr>
+      <tr *ngFor="let x of wishList">
+        <mat-card class="title" (click)="go(x.link)">
+          <h4>{{ x.title }}</h4>
+        </mat-card>
+        <mat-card class="icon">
+          <span class="material-icons">clear</span>
+        </mat-card>
+      </tr>
     </tbody>
   </table>
+</div>
+  
