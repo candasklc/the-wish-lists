@@ -8,18 +8,18 @@ import { RequestsService } from 'src/app/services/requests.service';
   styleUrls: ['./mainpage.component.scss']
 })
 export class MainpageComponent implements OnInit {
-  wishList: any = [];
+  wishList: Wish[] = [];
 
   constructor(private http: RequestsService) { }
 
   ngOnInit(): void {
+    this.fetchLists();
   }
 
   fetchLists(): void{
     this.http.getAllWishes().subscribe(data => {
       this.wishList = data;
     });
-    console.log('clicked');
   }
 
 }

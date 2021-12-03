@@ -8,6 +8,8 @@ import { Wish } from 'src/app/interfaces/wish';
   providedIn: 'root'
 })
 export class RequestsService {
+  urlGet = 'http://localhost:3000/all';
+
   options = {
     Headers
   }
@@ -16,8 +18,7 @@ export class RequestsService {
   constructor(private http: HttpClient) { }
 
   getAllWishes(): Observable<Wish[]>{
-    const url = '/all';
-    return this.http.get<Wish[]>(url);
+    return this.http.get<Wish[]>(this.urlGet);
   }
 
 }
