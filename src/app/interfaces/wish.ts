@@ -1,6 +1,6 @@
 export interface Wish {
-    wishId: 0,
-    title: '',
-    link: '',
-    user: '',
+    wishId: number,
+    title: string,
+    link: string,
+    user: string,
 }

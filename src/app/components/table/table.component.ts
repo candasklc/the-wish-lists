@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 import { Wish } from 'src/app/interfaces/wish';
+import { RequestsService } from 'src/app/services/requests.service';
 
 @Component({
   selector: 'app-table',
@@ -11,7 +11,7 @@ export class TableComponent implements OnInit {
   @Input() wishList : Wish[] = [];
 
 
-  constructor(private router: Router) { }
+  constructor(private http: RequestsService) { }
 
   ngOnInit(): void {
   }
@@ -22,6 +22,17 @@ export class TableComponent implements OnInit {
     } else {
       window.open('https://' + url,'_blank');
     }
+  }
+  
+  delete(wishId: number): void{
+    this.wishList.forEach((value,index)=>{
+      if(value.wishId==wishId) {
+        this.wishList.splice(index,1);
+      }
+    });
+    this.http.deleteWish(wishId).subscribe(data => {
+      console.log(data);
+    });
   }
 
 }

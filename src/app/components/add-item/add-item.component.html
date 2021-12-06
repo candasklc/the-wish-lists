@@ -1,6 +1,19 @@
-<div class="wraper">
-    <input matInput placeholder="Enter your wish to make it come true...">
-    <mat-card class="icon">
-        <h4>Add</h4>
-    </mat-card>
+<div class="container" (keyup.enter)="addItem()">
+  <div class="wraper">
+    <form class="form">
+      <mat-form-field class="form-field" appearance="fill">
+        <mat-label>The Wish</mat-label>
+        <input matInput placeholder="Enter your wish to make it come true..." [(ngModel)]="title" [ngModelOptions]="{standalone: true}" required>
+      </mat-form-field>
+    </form>
+    <form class="form">
+      <mat-form-field class="form-field" appearance="fill">
+        <mat-label>The Link</mat-label>
+        <input matInput placeholder="the link please..." [(ngModel)]="link" [ngModelOptions]="{standalone: true}" required>
+      </mat-form-field>
+    </form>
+    <button mat-button (click)="addItem()" class="addBtn">
+      Add
+    </button>
+  </div>
 </div>

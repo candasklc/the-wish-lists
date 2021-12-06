@@ -1,15 +1,11 @@
 <div class="wraper">
-  <table class="table table-striped">
-    <tbody>
-      <tr *ngFor="let x of wishList">
-        <mat-card class="title" (click)="go(x.link)">
-          <h4>{{ x.title }}</h4>
-        </mat-card>
-        <mat-card class="icon">
-          <span class="material-icons">clear</span>
-        </mat-card>
-      </tr>
-    </tbody>
-  </table>
+  <div class="item-container" *ngFor="let x of wishList">
+    <mat-card class="title" (click)="go(x.link)">
+      <h4>{{ x.title }}</h4>
+    </mat-card>
+    <mat-card class="icon" (click)="delete(x.wishId)">
+      <span class="material-icons">clear</span>
+    </mat-card>
+  </div>
 </div>
   

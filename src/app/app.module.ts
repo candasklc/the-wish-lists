@@ -9,6 +9,8 @@ import { MatTabsModule} from '@angular/material/tabs';
 import { MatInputModule } from '@angular/material/input'; 
 import { MatCardModule } from '@angular/material/card'; 
 import { MatButtonModule } from '@angular/material/button'; 
+import { FormsModule } from '@angular/forms';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle'; 
 
 import { AppComponent } from './app.component';
 import { MainpageComponent } from './components/mainpage/mainpage.component';
@@ -30,12 +32,14 @@ import { NavBarComponent } from './components/nav-bar/nav-bar.component';
     AppRoutingModule,
     HttpClientModule,
     NgbModule,
+    FormsModule,
     MatIconModule,
     BrowserAnimationsModule,
     MatTabsModule,
     MatInputModule,
     MatCardModule,
-    MatButtonModule
+    MatButtonModule,
+    MatSlideToggleModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -60,10 +60,20 @@ app.post('/add-wish',(req, res) => {
     if (err) {
       res.json({"error":err.message});
     }
-    res.send('The item was successfully added. \n title: '+ title + '\n link: '+ link + '\n user: ' + user);
-  });     
+    res.json('The item was successfully added. \n title: '+ title + '\n link: '+ link + '\n user: ' + user);
+  });
 });
 
+app.delete('/delete/:id',(req, res) => {
+  const id = req.params.id;
+  const sql = 'DELETE FROM ' + tableName + ' WHERE wishId = ?';
+  db.run(sql, id, (err, row) => {
+    if (err) {
+      res.json({"error":err.message});
+    }
+    res.json('The item is successfully removed from db.')
+  })
+});
 
 
 

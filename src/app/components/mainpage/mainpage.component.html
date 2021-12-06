@@ -1,18 +1,24 @@
 
 <div class="container">
-    <mat-card class="box-shadow">
-        <mat-tab-group mat-align-tabs="center">
+    <mat-card class="box-shadow" style="padding: 0;">
+        <mat-tab-group mat-align-tabs="center" style="padding: 0;">
             <mat-tab label="Djuli">
-                <div class="input-wraper">
-                    <app-add-item></app-add-item>
+                <div class="slide-container">
+                    <mat-slide-toggle [(ngModel)]="isAddModeDjuli">Slide me to add!</mat-slide-toggle>
+                </div>
+                <div class="input-wraper" *ngIf="isAddModeDjuli">
+                    <app-add-item [addedWish]="addedWish" [user]="userDjuli" (addedObjectChanged)="addedObjectHandler($event)"></app-add-item>
                 </div>
                 <div class="list-wraper">
                     <app-table [wishList]="djuliList"></app-table>
                 </div>
             </mat-tab>
             <mat-tab label="Dashi">
-                <div class="input-wraper">
-                    <app-add-item></app-add-item>
+                <div class="slide-container">
+                    <mat-slide-toggle color='primary' [(ngModel)]="isAddModeDashi">Slide me to add!</mat-slide-toggle>
+                </div>
+                <div class="input-wraper" *ngIf="isAddModeDashi">
+                    <app-add-item [addedWish]="addedWish" [user]="userDashi" (addedObjectChanged)="addedObjectHandler($event)"></app-add-item>
                 </div>
                 <div class="list-wraper">
                     <app-table [wishList]="dashiList"></app-table>
