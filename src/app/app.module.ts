@@ -15,13 +15,15 @@ import { MainpageComponent } from './components/mainpage/mainpage.component';
 import { TableComponent } from './components/table/table.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AddItemComponent } from './components/add-item/add-item.component';
+import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     MainpageComponent,
     TableComponent,
-    AddItemComponent
+    AddItemComponent,
+    NavBarComponent
   ],
   imports: [
     BrowserModule,

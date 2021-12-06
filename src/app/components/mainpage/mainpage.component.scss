@@ -1,13 +1,17 @@
 .container{
-    min-height: 100vh;
+    min-height: 90vh;
     display: flex;
     justify-content: center;
-    align-items: center;
-    .input-wraper{
-        width: 100%;
-    }
-    .list-wraper{
-        width: 500px;
-        min-height: 500px;
+    .box-shadow{
+        position: relative;
+        top: 50px;
+        height: 80%;
+        .input-wraper{
+            width: 100%;
+            margin: 7px 0 7px;
+        }
+        .list-wraper{
+            min-width: 400px;
+        }
     }
 }
