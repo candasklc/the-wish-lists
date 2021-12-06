@@ -8,6 +8,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatTabsModule} from '@angular/material/tabs'; 
 import { MatInputModule } from '@angular/material/input'; 
 import { MatCardModule } from '@angular/material/card'; 
+import { MatButtonModule } from '@angular/material/button'; 
 
 import { AppComponent } from './app.component';
 import { MainpageComponent } from './components/mainpage/mainpage.component';
@@ -31,7 +32,8 @@ import { AddItemComponent } from './components/add-item/add-item.component';
     BrowserAnimationsModule,
     MatTabsModule,
     MatInputModule,
-    MatCardModule
+    MatCardModule,
+    MatButtonModule
   ],
   providers: [],
   bootstrap: [AppComponent]

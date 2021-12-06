@@ -2,11 +2,17 @@
 <div class="container">
     <mat-tab-group mat-align-tabs="center">
         <mat-tab label="Djuli">
+            <div class="input-wraper">
+                <app-add-item></app-add-item>
+            </div>
             <div class="list-wraper">
                 <app-table [wishList]="djuliList"></app-table>
             </div>
         </mat-tab>
         <mat-tab label="Dashi">
+            <div class="input-wraper">
+                <app-add-item></app-add-item>
+            </div>
             <div class="list-wraper">
                 <app-table [wishList]="dashiList"></app-table>
             </div>

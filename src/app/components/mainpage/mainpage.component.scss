@@ -3,9 +3,11 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    .input-wraper{
+        width: 100%;
+    }
     .list-wraper{
         width: 500px;
         min-height: 500px;
-        background-color: whitesmoke;
     }
 }

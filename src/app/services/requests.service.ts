@@ -8,6 +8,7 @@ import { Wish } from 'src/app/interfaces/wish';
   providedIn: 'root'
 })
 export class RequestsService {
+  // urlGet = 'http://localhost:3000/all';
   urlGet = '/all';
 
   options = {
