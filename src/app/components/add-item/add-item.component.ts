@@ -1,7 +1,6 @@
 import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 import { Wish } from 'src/app/interfaces/wish';
 import { RequestsService } from 'src/app/services/requests.service';
-
 @Component({
   selector: 'app-add-item',
   templateUrl: './add-item.component.html',
@@ -32,7 +31,8 @@ export class AddItemComponent implements OnInit {
     this.http.addWish(this.addedWish).subscribe(data => {
       console.log(data);
     });
-    
+    this.title = '';
+    this.link = '';
   }
 
 }
