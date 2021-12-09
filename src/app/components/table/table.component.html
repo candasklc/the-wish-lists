@@ -1,9 +1,9 @@
 <div class="wraper">
   <div class="item-container" *ngFor="let x of wishList">
-    <mat-card class="title" (click)="go(x.link)">
+    <mat-card class="title">
       <h4>{{ x.title }}</h4>
     </mat-card>
-    <mat-card class="icon" (click)="delete(x.wishId)">
+    <mat-card class="icon">
       <span class="material-icons">clear</span>
     </mat-card>
   </div>
