@@ -24,15 +24,15 @@ export class TableComponent implements OnInit {
     }
   }
   
-  // delete(wishId: number): void{
-  //   this.wishList.forEach((value,index)=>{
-  //     if(value.wishId==wishId) {
-  //       this.wishList.splice(index,1);
-  //     }
-  //   });
-  //   this.http.deleteWish(wishId).subscribe(data => {
-  //     console.log(data);
-  //   });
-  // }
+  delete(wishId: number): void{
+    this.wishList.forEach((value,index)=>{
+      if(value.wishId==wishId) {
+        this.wishList.splice(index,1);
+      }
+    });
+    // this.http.deleteWish(wishId).subscribe(data => {
+    //   console.log(data);
+    // });
+  }
 
 }
