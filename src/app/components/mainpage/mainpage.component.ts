@@ -10,7 +10,6 @@ import { RequestsService } from 'src/app/services/requests.service';
 export class MainpageComponent implements OnInit {
   @Output() dashiList: Wish[] = [];
   @Output() djuliList: Wish[] = [];
-  private allLists: Wish[] = [];
 
   @Output() userDashi = 'dashi';
   @Output() userDjuli = 'djuli';
@@ -50,7 +49,9 @@ export class MainpageComponent implements OnInit {
   }
 
   addedObjectHandler(addedWish: Wish): void{
-    if (addedWish.user.toLocaleLowerCase() == 'dashi') {
+    if (addedWish.link == '' || addedWish.title == ''){
+      console.log('Empty wishes are meaningless.');
+    }else if (addedWish.user.toLocaleLowerCase() == 'dashi') {
       this.dashiList.push(addedWish);
     } else if (addedWish.user.toLocaleLowerCase() == 'djuli') {
       this.djuliList.push(addedWish);
