@@ -72,7 +72,8 @@ app.delete('/delete/:id',(req, res) => {
       res.json({"error":err.message});
     }
     res.json('The item is successfully removed from db.')
-  })
+  });
+  db.close();
 });
 
 
