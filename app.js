@@ -64,17 +64,17 @@ app.post('/add-wish',(req, res) => {
   });
 });
 
-app.delete('/delete/:id',(req, res) => {
-  const id = req.params.id;
-  const sql = 'DELETE FROM ' + tableName + ' WHERE wishId = ?';
-  db.run(sql, id, (err, row) => {
-    if (err) {
-      res.json({"error":err.message});
-    }
-    res.json('The item is successfully removed from db.')
-  });
-  db.close();
-});
+// app.delete('/delete/:id',(req, res) => {
+//   const id = req.params.id;
+//   const sql = 'DELETE FROM ' + tableName + ' WHERE wishId = ?';
+//   db.run(sql, id, (err, row) => {
+//     if (err) {
+//       res.json({"error":err.message});
+//     }
+//     res.json('The item is successfully removed from db.')
+//   });
+//   db.close();
+// });
 
 
 
