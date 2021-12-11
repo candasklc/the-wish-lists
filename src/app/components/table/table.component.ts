@@ -25,9 +25,9 @@ export class TableComponent implements OnInit {
   }
   
   delete(wishId: number): void{
-    // this.http.deleteWish(wishId).subscribe(data => {
-    //   console.log(data);
-    // });
+    this.http.deleteWish(wishId).subscribe(data => {
+      console.log(data);
+    });
     this.wishList.forEach((value,index)=>{
       if(value.wishId==wishId) {
         this.wishList.splice(index,1);
