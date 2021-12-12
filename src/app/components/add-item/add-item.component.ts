@@ -1,6 +1,5 @@
 import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 import { Wish } from 'src/app/interfaces/wish';
-import { RequestsService } from 'src/app/services/requests.service';
 @Component({
   selector: 'app-add-item',
   templateUrl: './add-item.component.html',
@@ -9,7 +8,6 @@ import { RequestsService } from 'src/app/services/requests.service';
 export class AddItemComponent implements OnInit {
   @Input() user = '';
   @Input() addedWish: Wish = {
-    wishId: 0,
     title: '',
     link: '',
     user: ''
@@ -18,7 +16,7 @@ export class AddItemComponent implements OnInit {
   public title = '';
   public link = '';
 
-  constructor(private http: RequestsService) { }
+  constructor() { }
 
   ngOnInit(): void {
   }
@@ -28,11 +26,6 @@ export class AddItemComponent implements OnInit {
     this.addedWish.link = this.link;
     this.addedWish.user = this.user;
     this.addedObjectChanged.emit(this.addedWish);
-    this.http.addWish(this.addedWish).subscribe(data => {
-      console.log(data);
-    });
-    this.title = '';
-    this.link = '';
   }
 
 }

@@ -18,7 +18,6 @@ export class MainpageComponent implements OnInit {
   public isAddModeDjuli = false;
   
   public addedWish: Wish = {
-    wishId: 0,
     title: '',
     link: '',
     user: ''
@@ -29,7 +28,6 @@ export class MainpageComponent implements OnInit {
 
   ngOnInit(): void {
     this.fetchLists();
-    
   }
 
   fetchLists(): void{
@@ -56,6 +54,9 @@ export class MainpageComponent implements OnInit {
     } else if (addedWish.user.toLocaleLowerCase() == 'djuli') {
       this.djuliList.push(addedWish);
     }
+    this.http.addWish(addedWish).subscribe(data => {
+      console.log(data);
+    });
   }
 
 }

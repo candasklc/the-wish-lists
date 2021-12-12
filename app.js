@@ -2,8 +2,9 @@ const express = require('express');
 const path = require('path');
 const app = express();
 const PORT = process.env.PORT || 3000;
-const db = require('./db');
-const tableName = 'wishes';
+const fs = require('fs');
+const dashiDb = require('./dashiDb.json');
+const djuliDb = require('./djuliDb.json');
  
 app.use(express.json());
 
@@ -27,53 +28,50 @@ app.use(express.static(path.join(__dirname, "/src/app/components/mainpage")));
 
 // ------------- API ROUTES
 app.get('/all', (req, res) => {
-  const sql = "SELECT * FROM "+tableName;
-  const params = []
-  db.all(sql, params, (err, rows) => {
-      if (err) {
-        res.status(400).json({"error":err.message});
-        return;
-      }
-      res.status(200).json(rows);
-    })
-});
-
-app.get('/wish/:id', (req, res) => {
-  const id = req.params.id;
-  const sql = 'SELECT * FROM ' + tableName + ' WHERE wishId = ?';
-  db.get(sql, id, (err, row) => {
-    if (err) {
-        res.status(400).json({"error":err.message});
-        return;
-      }
-      res.json(row);
-    });
+  const dashiList = JSON.parse(fs.readFileSync('./dashiDb.json'))
+  const djuliList =  JSON.parse(fs.readFileSync('./djuliDb.json'))
+  const theOneList = [...dashiList, ...djuliList];
+  res.json(theOneList);
 });
 
 app.post('/add-wish',(req, res) => {
-  // Add request body to retrieve data from the request.(From frontend)
-  const title = req.body.title;
-  const link = req.body.link;
-  const user = req.body.user;
-  const sql = 'INSERT INTO wishes (title, link, user) VALUES ("'+ title +'","'+ link +'","'+ user +'")';
-  db.exec(sql, (err, row) => {
-    if (err) {
-      res.json({"error":err.message});
-    }
-    res.json('The item was successfully added. \n title: '+ title + '\n link: '+ link + '\n user: ' + user);
-  });
+  if (req.body.user.toLocaleLowerCase() == 'dashi') {
+    const readDb = JSON.parse(fs.readFileSync('./dashiDb.json'));
+    readDb.push(req.body);
+    const stringData = JSON.stringify(readDb);
+    fs.writeFileSync('./dashiDb.json', stringData);
+  }else if (req.body.user.toLocaleLowerCase() == 'djuli') {
+    const readDb = JSON.parse(fs.readFileSync('./djuliDb.json'));
+    readDb.push(req.body);
+    const stringData = JSON.stringify(readDb);
+    fs.writeFileSync('./djuliDb.json', stringData);
+  }
+  res.json('The wish successfully added.');
 });
 
-app.delete('/delete/:id',(req, res) => {
-  const id = req.params.id;
-  const sql = 'DELETE FROM ' + tableName + ' WHERE wishId = ?';
-  db.run(sql, id, (err, row) => {
-    if (err) {
-      res.json({"error":err.message});
+app.post('/delete',(req, res) => {
+  const dashiList = JSON.parse(fs.readFileSync('./dashiDb.json'))
+  const djuliList =  JSON.parse(fs.readFileSync('./djuliDb.json'))
+  const theOneList = [...dashiList, ...djuliList];
+    theOneList.forEach((x, index) => {
+      if(x.link === req.body.link) {
+        theOneList.splice(index,1);
+      }
+    });
+  const newDashi = [];
+  const newDjuli = [];
+  theOneList.forEach(x => {
+    if(x.user == 'dashi'){
+      newDashi.push(x);
+    }else if(x.user == 'djuli'){
+      newDjuli.push(x);
     }
-    res.json('The item is successfully removed from db.')
   });
-  db.close();
+  const stringDashi = JSON.stringify(newDashi);
+  fs.writeFileSync('./dashiDb.json', stringDashi);
+  const stringDjuli = JSON.stringify(newDjuli);
+  fs.writeFileSync('./djuliDb.json', stringDjuli);
+  res.json('Removed');
 });
 
 

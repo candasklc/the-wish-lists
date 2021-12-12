@@ -24,14 +24,14 @@ export class TableComponent implements OnInit {
     }
   }
   
-  delete(wishId: number): void{
-    this.http.deleteWish(wishId).subscribe(data => {
-      console.log(data);
-    });
+  delete(obj: Wish): void{
     this.wishList.forEach((value,index)=>{
-      if(value.wishId==wishId) {
+      if(value.link == obj.link) {
         this.wishList.splice(index,1);
       }
+    });
+     this.http.deleteWish(obj).subscribe(data => {
+      console.log(data);
     });
   }
 
