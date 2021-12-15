@@ -4,7 +4,6 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 const db = require('./config/db');
 const { collection } = require('./models/wish');
-const wishModel = require('./models/wish');
 
 app.use(express.json());
 
