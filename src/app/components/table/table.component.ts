@@ -9,6 +9,7 @@ import { RequestsService } from 'src/app/services/requests.service';
 })
 export class TableComponent implements OnInit {
   @Input() wishList : Wish[] = [];
+  info = '';
 
 
   constructor(private http: RequestsService) { }
@@ -24,15 +25,16 @@ export class TableComponent implements OnInit {
     }
   }
   
-  delete(obj: Wish): void{
+  delete(id: string): void{
+    console.log(this.wishList);
+    this.http.deleteWish(id).subscribe(data => {
+      this.info = data;
+    });
+    
     this.wishList.forEach((value,index)=>{
-      if(value.link == obj.link) {
+      if(value._id === id) {
         this.wishList.splice(index,1);
       }
     });
-     this.http.deleteWish(obj).subscribe(data => {
-      console.log(data);
-    });
   }
-
 }
