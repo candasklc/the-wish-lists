@@ -9,12 +9,6 @@ import { RequestsService } from 'src/app/services/requests.service';
 })
 export class AddItemComponent implements OnInit {
   @Input() user = '';
-  @Input() addedWish: Wish = {
-    _id: '',
-    title: '',
-    link: '',
-    user: '',
-  };
   @Output() addedObjectChanged: EventEmitter<Wish> =   new EventEmitter();
   public title = '';
   public link = '';
@@ -25,14 +19,23 @@ export class AddItemComponent implements OnInit {
   }
 
   addItem(): void{
-    this.http.addWish(this.addedWish).subscribe(data => {
-      this.addedWish._id = data.insertedId;
+    const newWish: Wish = {
+      _id: '',
+      title: '',
+      link: '',
+      user: '',
+    };
+
+    newWish.title = this.title;
+    newWish.link = this.link;
+    newWish.user = this.user;
+
+    this.http.addWish(newWish).subscribe(data => {
+      newWish._id = data.insertedId;
       console.log(data);
     });
-    this.addedWish.title = this.title;
-    this.addedWish.link = this.link;
-    this.addedWish.user = this.user;
-    this.addedObjectChanged.emit(this.addedWish);
+  
+    this.addedObjectChanged.emit(newWish);
   }
 
 }

@@ -7,7 +7,7 @@
                     <mat-slide-toggle [(ngModel)]="isAddModeDjuli">Slide me to add!</mat-slide-toggle>
                 </div>
                 <div class="input-wraper" *ngIf="isAddModeDjuli">
-                    <app-add-item [addedWish]="addedWish" [user]="userDjuli" (addedObjectChanged)="addedObjectHandler($event)"></app-add-item>
+                    <app-add-item [user]="userDjuli" (addedObjectChanged)="addedObjectHandler($event)"></app-add-item>
                 </div>
                 <div class="list-wraper">
                     <app-table [wishList]="djuliList"></app-table>
@@ -18,7 +18,7 @@
                     <mat-slide-toggle color='primary' [(ngModel)]="isAddModeDashi">Slide me to add!</mat-slide-toggle>
                 </div>
                 <div class="input-wraper" *ngIf="isAddModeDashi">
-                    <app-add-item [addedWish]="addedWish" [user]="userDashi" (addedObjectChanged)="addedObjectHandler($event)"></app-add-item>
+                    <app-add-item [user]="userDashi" (addedObjectChanged)="addedObjectHandler($event)"></app-add-item>
                 </div>
                 <div class="list-wraper">
                     <app-table [wishList]="dashiList"></app-table>

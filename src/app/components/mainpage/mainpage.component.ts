@@ -21,13 +21,6 @@ export class MainpageComponent implements OnInit {
   public isAddModeDashi = false;
   public isAddModeDjuli = false;
   
-  public addedWish: Wish = {
-    _id: '',
-    title: '',
-    link: '',
-    user: '',
-  };
-  
 
   constructor(private http: RequestsService) { }
 
