@@ -20,7 +20,7 @@ import { AddItemComponent } from './components/add-item/add-item.component';
 import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { DialogComponent } from './dialog/dialog.component'; 
-
+import { MatExpansionModule } from '@angular/material/expansion'; 
 @NgModule({
   declarations: [
     AppComponent,
@@ -43,7 +43,8 @@ import { DialogComponent } from './dialog/dialog.component';
     MatCardModule,
     MatButtonModule,
     MatSlideToggleModule,
-    MatDialogModule
+    MatDialogModule,
+    MatExpansionModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -20,6 +20,7 @@ export class MainpageComponent implements OnInit {
   
   public isAddModeDashi = false;
   public isAddModeDjuli = false;
+
   
 
   constructor(private http: RequestsService) { }
