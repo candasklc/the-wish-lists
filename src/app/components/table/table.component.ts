@@ -1,4 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { DialogComponent } from 'src/app/dialog/dialog.component';
 import { Wish } from 'src/app/interfaces/wish';
 import { RequestsService } from 'src/app/services/requests.service';
 
@@ -11,8 +13,7 @@ export class TableComponent implements OnInit {
   @Input() wishList : Wish[] = [];
   info = '';
 
-
-  constructor(private http: RequestsService) { }
+  constructor(private http: RequestsService, public dialog: MatDialog) { }
 
   ngOnInit(): void {
   }
@@ -24,9 +25,18 @@ export class TableComponent implements OnInit {
       window.open('https://' + url,'_blank');
     }
   }
+
+  openDialog(id: string) {
+    const dialogRef = this.dialog.open(DialogComponent);
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.delete(id);
+      }
+    });
+  }
   
   delete(id: string): void{
-    console.log(this.wishList);
     this.http.deleteWish(id).subscribe(data => {
       this.info = data;
     });

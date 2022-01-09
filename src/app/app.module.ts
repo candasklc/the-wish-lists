@@ -18,6 +18,8 @@ import { TableComponent } from './components/table/table.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AddItemComponent } from './components/add-item/add-item.component';
 import { NavBarComponent } from './components/nav-bar/nav-bar.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { DialogComponent } from './dialog/dialog.component'; 
 
 @NgModule({
   declarations: [
@@ -25,7 +27,8 @@ import { NavBarComponent } from './components/nav-bar/nav-bar.component';
     MainpageComponent,
     TableComponent,
     AddItemComponent,
-    NavBarComponent
+    NavBarComponent,
+    DialogComponent
   ],
   imports: [
     BrowserModule,
@@ -39,7 +42,8 @@ import { NavBarComponent } from './components/nav-bar/nav-bar.component';
     MatInputModule,
     MatCardModule,
     MatButtonModule,
-    MatSlideToggleModule
+    MatSlideToggleModule,
+    MatDialogModule
   ],
   providers: [],
   bootstrap: [AppComponent]
