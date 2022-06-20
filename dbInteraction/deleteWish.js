@@ -1,5 +1,5 @@
 const ObjectId = require("mongoose").Types.ObjectId;
-const { collection } = require("./models/wish");
+const { collection } = require("../models/wish");
 
 function deleteWish(req, res) {
   const id = req.params.id;
@@ -13,6 +13,6 @@ function deleteWish(req, res) {
       res.json("Error was raised while removing an item. " + e);
     }
   }
-};
+}
 
-module.exports = deleteWish();
+module.exports = deleteWish;

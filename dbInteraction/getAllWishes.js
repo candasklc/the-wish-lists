@@ -1,6 +1,6 @@
-const { collection } = require("./models/wish");
+const { collection } = require("../models/wish");
 
-function getAllWishes() {
+function getAllWishes(req, res) {
   collection.find({}).toArray((err, results) => {
     if (!err) {
       res.send(results);
@@ -8,6 +8,6 @@ function getAllWishes() {
       res.status(err);
     }
   });
-};
+}
 
-module.exports = getAllWishes();
+module.exports = getAllWishes;

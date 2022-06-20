@@ -3,11 +3,9 @@ const path = require("path");
 const app = express();
 const PORT = process.env.PORT || 3000;
 const db = require("./config/db");
-const ObjectId = require("mongoose").Types.ObjectId;
-const { collection } = require("./models/wish");
-// const getAllWishes = require("./dbInteraction/getAllWishes");
-// const addWish = require("./dbInteraction/addWish");
-// const deleteWish = require("./dbInteraction/deleteWish");
+const getAllWishes = require("./dbInteraction/getAllWishes");
+const addWish = require("./dbInteraction/addWish");
+const deleteWish = require("./dbInteraction/deleteWish");
 
 app.use(express.json());
 
@@ -30,42 +28,15 @@ app.use(express.static(path.join(__dirname, "/src/app/components/mainpage")));
 
 // ------------- Db interaction
 app.get("/all", (req, res) => {
-  collection.find({}).toArray((err, results) => {
-    if (!err) {
-      res.send(results);
-    } else {
-      res.status(err);
-    }
-  });
+  getAllWishes(req, res);
 });
 
 app.post("/add-wish", (req, res) => {
-  const newWish = {
-    title: req.body.title,
-    link: req.body.link,
-    user: req.body.user,
-  };
-  collection.insertOne(newWish, (err, result) => {
-    if (!err) {
-      res.json(result);
-    } else {
-      res.json("Error was raised while adding an item. " + err);
-    }
-  });
+  addWish(req, res);
 });
 
 app.delete("/delete/:id", (req, res) => {
-  const id = req.params.id;
-  if (!ObjectId.isValid(id)) {
-    res.json("No records with given id: " + id);
-  } else {
-    try {
-      collection.deleteOne({ _id: ObjectId(id) });
-      res.json("Item is removed with id: " + id);
-    } catch (e) {
-      res.json("Error was raised while removing an item. " + e);
-    }
-  }
+  deleteWish(req, res);
 });
 
 app.listen(PORT, () => {

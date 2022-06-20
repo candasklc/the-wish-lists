@@ -1,4 +1,4 @@
-const { collection } = require("./models/wish");
+const { collection } = require("../models/wish");
 
 function addWish(req, res) {
   const newWish = {
@@ -13,6 +13,6 @@ function addWish(req, res) {
       res.json("Error was raised while adding an item. " + err);
     }
   });
-};
+}
 
-module.exports = addWish();
+module.exports = addWish;
