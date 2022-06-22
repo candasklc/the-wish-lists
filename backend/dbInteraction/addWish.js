@@ -4,7 +4,7 @@ function addWish(req, res) {
   const newWish = {
     title: req.body.title,
     link: req.body.link,
-    user: req.body.user,
+    user: req.body.user
   };
   collection.insertOne(newWish, (err, result) => {
     if (!err) {
