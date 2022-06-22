@@ -3,11 +3,23 @@
     <form #myForm="ngForm" (ngSubmit)="addItem()" class="form">
       <mat-form-field class="form-field" appearance="fill">
         <mat-label>The Wish</mat-label>
-        <input matInput placeholder="Enter your wish to make it come true..." [(ngModel)]="title" [ngModelOptions]="{standalone: true}" required>
+        <input
+          matInput
+          placeholder="Enter your wish to make it come true..."
+          [(ngModel)]="title"
+          [ngModelOptions]="{ standalone: true }"
+          required
+        />
       </mat-form-field>
       <mat-form-field class="form-field" appearance="fill">
         <mat-label>The Link</mat-label>
-        <input matInput placeholder="the link please..." [(ngModel)]="link" [ngModelOptions]="{standalone: true}" required>
+        <input
+          matInput
+          placeholder="the link please..."
+          [(ngModel)]="link"
+          [ngModelOptions]="{ standalone: true }"
+          required
+        />
       </mat-form-field>
     </form>
     <button mat-button type="submit" (click)="addItem()" class="addBtn">

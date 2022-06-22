@@ -5,20 +5,19 @@ import { RequestsService } from 'src/app/services/requests.service';
 @Component({
   selector: 'app-add-item',
   templateUrl: './add-item.component.html',
-  styleUrls: ['./add-item.component.scss']
+  styleUrls: ['./add-item.component.scss'],
 })
 export class AddItemComponent implements OnInit {
   @Input() user = '';
-  @Output() addedObjectChanged: EventEmitter<Wish> =   new EventEmitter();
+  @Output() addedObjectChanged: EventEmitter<Wish> = new EventEmitter();
   public title = '';
   public link = '';
 
-  constructor(private http: RequestsService) { }
+  constructor(private http: RequestsService) {}
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
-  addItem(): void{
+  addItem(): void {
     const newWish: Wish = {
       _id: '',
       title: '',
@@ -30,12 +29,11 @@ export class AddItemComponent implements OnInit {
     newWish.link = this.link;
     newWish.user = this.user;
 
-    this.http.addWish(newWish).subscribe(data => {
+    this.http.addWish(newWish).subscribe((data) => {
       newWish._id = data.insertedId;
       console.log(data);
     });
-  
+
     this.addedObjectChanged.emit(newWish);
   }
-
 }
