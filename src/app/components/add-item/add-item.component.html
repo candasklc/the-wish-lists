@@ -1,23 +1,22 @@
 <div class="container" (keyup.enter)="addItem()">
   <div class="wraper">
-    <form #myForm="ngForm" (ngSubmit)="addItem()" class="form">
+    <form [formGroup]="form" (ngSubmit)="addItem()">
       <mat-form-field class="form-field" appearance="fill">
         <mat-label>The Wish</mat-label>
         <input
+          formControlName="title"
           matInput
           placeholder="Enter your wish to make it come true..."
-          [(ngModel)]="title"
-          [ngModelOptions]="{ standalone: true }"
           required
         />
       </mat-form-field>
       <mat-form-field class="form-field" appearance="fill">
         <mat-label>The Link</mat-label>
         <input
+          formControlName="link"
+          type="url"
           matInput
           placeholder="the link please..."
-          [(ngModel)]="link"
-          [ngModelOptions]="{ standalone: true }"
           required
         />
       </mat-form-field>

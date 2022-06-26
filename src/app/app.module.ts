@@ -10,7 +10,9 @@ import { MatInputModule } from '@angular/material/input';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { MatFormFieldModule } from '@angular/material/form-field';
 
 import { AppComponent } from './app.component';
 import { MainpageComponent } from './components/mainpage/mainpage.component';
@@ -36,6 +38,7 @@ import { MatExpansionModule } from '@angular/material/expansion';
     HttpClientModule,
     NgbModule,
     FormsModule,
+    ReactiveFormsModule,
     MatIconModule,
     BrowserAnimationsModule,
     MatTabsModule,
@@ -45,6 +48,7 @@ import { MatExpansionModule } from '@angular/material/expansion';
     MatSlideToggleModule,
     MatDialogModule,
     MatExpansionModule,
+    MatFormFieldModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

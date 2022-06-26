@@ -1,5 +1,5 @@
 import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import { FormControl, FormGroup } from '@angular/forms';
 import { Wish } from 'src/app/interfaces/wish';
 import { RequestsService } from 'src/app/services/requests.service';
 @Component({
@@ -10,30 +10,26 @@ import { RequestsService } from 'src/app/services/requests.service';
 export class AddItemComponent implements OnInit {
   @Input() user = '';
   @Output() addedObjectChanged: EventEmitter<Wish> = new EventEmitter();
-  public title = '';
-  public link = '';
+  public form = new FormGroup({
+    _id: new FormControl(''),
+    title: new FormControl(''),
+    link: new FormControl(''),
+    user: new FormControl(''),
+  });
 
   constructor(private http: RequestsService) {}
 
   ngOnInit(): void {}
 
   addItem(): void {
-    const newWish: Wish = {
-      _id: '',
-      title: '',
-      link: '',
-      user: '',
-    };
-
-    newWish.title = this.title;
-    newWish.link = this.link;
-    newWish.user = this.user;
-
-    this.http.addWish(newWish).subscribe((data) => {
-      newWish._id = data.insertedId;
-      console.log(data);
+    this.form.patchValue({
+      user: this.user,
     });
-
-    this.addedObjectChanged.emit(newWish);
+    this.http.addWish(this.form.value).subscribe((data) => {
+      this.form.patchValue({
+        _id: data.insertedId,
+      });
+      this.addedObjectChanged.emit(this.form.value);
+    });
   }
 }

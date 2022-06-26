@@ -7,15 +7,9 @@ import { Wish } from 'src/app/interfaces/wish';
   providedIn: 'root',
 })
 export class RequestsService {
-  // For Dev Environment.
-  // urlGet = 'http://localhost:3000/all';
-  // urlPost = 'http://localhost:3000/add-wish';
-  // urlDelete = 'http://localhost:3000/delete/';
-
-  // For Production Environment
-  urlGet = '/all';
-  urlPost = '/add-wish';
-  urlDelete = '/delete/';
+  private urlGet = '/all';
+  private urlPost = '/add-wish';
+  private urlDelete = '/delete/';
 
   constructor(private http: HttpClient) {}
 
