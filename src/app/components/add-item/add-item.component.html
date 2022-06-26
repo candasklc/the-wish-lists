@@ -1,24 +1,28 @@
 <div class="container" (keyup.enter)="addItem()">
-  <div class="wraper">
-    <form [formGroup]="form" (ngSubmit)="addItem()">
-      <mat-form-field class="form-field" appearance="fill">
+  <div class="wrapper">
+    <form class="form" [formGroup]="form" (ngSubmit)="addItem()">
+      <mat-form-field class="form-field" appearance="outline">
         <mat-label>The Wish</mat-label>
         <input
           formControlName="title"
           matInput
           placeholder="Enter your wish to make it come true..."
-          required
         />
+        <mat-error *ngIf="form.controls['title'].invalid">{{
+          getErrorMessage("title")
+        }}</mat-error>
       </mat-form-field>
-      <mat-form-field class="form-field" appearance="fill">
+      <mat-form-field class="form-field" appearance="outline">
         <mat-label>The Link</mat-label>
         <input
           formControlName="link"
           type="url"
           matInput
           placeholder="the link please..."
-          required
         />
+        <mat-error *ngIf="form.controls['link'].invalid">{{
+          getErrorMessage("link")
+        }}</mat-error>
       </mat-form-field>
     </form>
     <button mat-button type="submit" (click)="addItem()" class="addBtn">

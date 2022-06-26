@@ -1,19 +1,15 @@
 .container {
   display: flex;
   justify-content: center;
-  .wraper {
+  .wrapper {
     width: 80%;
     .form {
-      width: 100%;
       .form-field {
-        width: 100%;
+        display: block;
+        input{
+          width: 100%;
+        }
       }
-    }
-    mat-card {
-      margin: 0 0 2px 0;
-      cursor: pointer;
-      display: flex;
-      justify-content: center;
     }
     .addBtn {
       background-color: rgb(40, 148, 40);

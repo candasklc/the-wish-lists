@@ -30,7 +30,7 @@ import { MatExpansionModule } from '@angular/material/expansion';
     TableComponent,
     AddItemComponent,
     NavBarComponent,
-    DialogComponent,
+    DialogComponent
   ],
   imports: [
     BrowserModule,
@@ -48,9 +48,9 @@ import { MatExpansionModule } from '@angular/material/expansion';
     MatSlideToggleModule,
     MatDialogModule,
     MatExpansionModule,
-    MatFormFieldModule,
+    MatFormFieldModule
   ],
   providers: [],
-  bootstrap: [AppComponent],
+  bootstrap: [AppComponent]
 })
 export class AppModule {}
