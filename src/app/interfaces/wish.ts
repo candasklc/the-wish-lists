@@ -3,4 +3,5 @@ export interface Wish {
   title: string;
   link: string;
   user: string;
+  category: string;
 }

@@ -24,6 +24,13 @@
           getErrorMessage("link")
         }}</mat-error>
       </mat-form-field>
+      <mat-radio-group class="category-container" formControlName="category">
+        <div *ngFor="let x of categories">
+          <mat-radio-button value="{{ x }}">{{
+            x | titlecase
+          }}</mat-radio-button>
+        </div>
+      </mat-radio-group>
     </form>
     <button mat-button type="submit" (click)="addItem()" class="addBtn">
       Add

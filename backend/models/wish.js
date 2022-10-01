@@ -6,6 +6,7 @@ const wishSchema = new mongoose.Schema({
   title: { type: String, default: "" },
   link: { type: String, default: "" },
   user: { type: String, default: "" },
+  category: { type: String, default: "" },
 });
 
 // define the wish model
