@@ -2,6 +2,7 @@ const express = require("express");
 const app = express();
 const db = require("./config/db");
 const getAllWishes = require("./dbInteraction/getAllWishes");
+const getCategories = require("./dbInteraction/getCategories");
 const addWish = require("./dbInteraction/addWish");
 const deleteWish = require("./dbInteraction/deleteWish");
 
@@ -18,6 +19,10 @@ app.use(function (req, res, next) {
 // ------------- PAGE ROUTES
 app.get("/", (req, res) => {
   res.sendFile("/dist/angularExpress/index.html", { root: "." });
+});
+
+app.get("/categories", (req, res) => {
+  getCategories(req, res);
 });
 
 // ------------- Db interaction

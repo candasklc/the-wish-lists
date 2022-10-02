@@ -25,19 +25,10 @@ export class MainpageComponent implements OnInit {
     this.fetchLists();
   }
 
-  fetchLists(): void {
+  private fetchLists(): void {
     this.http.getAllWishes().subscribe((data) => {
-      this.filterList(data);
-    });
-  }
-
-  filterList(theLists: Wish[]): void {
-    theLists.filter((x) => {
-      if (x.user.toLocaleLowerCase() === 'dashi') {
-        this.dashiList.push(x);
-      } else if (x.user.toLocaleLowerCase() === 'djuli') {
-        this.djuliList.push(x);
-      }
+      this.dashiList = data.dashiList;
+      this.djuliList = data.djuliList;
     });
   }
 

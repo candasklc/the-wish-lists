@@ -11,11 +11,15 @@ import { RequestsService } from 'src/app/services/requests.service';
 })
 export class TableComponent implements OnInit {
   @Input() wishList: Wish[] = [];
+  public categories = [];
   info = '';
 
   constructor(private http: RequestsService, public dialog: MatDialog) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    console.log(this.wishList);
+    this.fetchCategories();
+  }
 
   go(url: string): void {
     if (url.includes('https')) {
@@ -23,6 +27,12 @@ export class TableComponent implements OnInit {
     } else {
       window.open('https://' + url, '_blank');
     }
+  }
+
+  fetchCategories(): void {
+    this.http.getCategories().subscribe((data) => {
+      this.categories = data;
+    });
   }
 
   openDialog(id: string) {
