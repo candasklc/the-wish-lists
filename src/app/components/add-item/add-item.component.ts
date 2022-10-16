@@ -40,6 +40,8 @@ export class AddItemComponent implements OnInit {
         this.form.patchValue({
           _id: data.insertedId,
         });
+        this.addedObjectChanged.emit(this.form.value);
+        this.form.reset();
       });
     }
   }

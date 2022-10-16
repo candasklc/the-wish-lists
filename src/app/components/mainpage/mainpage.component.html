@@ -2,35 +2,11 @@
   <mat-card class="box-shadow" style="padding: 0">
     <mat-tab-group mat-align-tabs="center" style="padding: 0">
       <mat-tab label="Djuli">
-        <mat-accordion>
-          <mat-expansion-panel hideToggle>
-            <mat-expansion-panel-header>
-              <mat-panel-description class="panel">
-                Add Wishes
-              </mat-panel-description>
-            </mat-expansion-panel-header>
-            <div class="input-wraper">
-              <app-add-item [user]="userDjuli"></app-add-item>
-            </div>
-          </mat-expansion-panel>
-        </mat-accordion>
         <div class="list-wraper">
           <app-table [user]="userDjuli"></app-table>
         </div>
       </mat-tab>
       <mat-tab label="Dashi">
-        <mat-accordion>
-          <mat-expansion-panel hideToggle>
-            <mat-expansion-panel-header>
-              <mat-panel-description class="panel">
-                Add Wishes
-              </mat-panel-description>
-            </mat-expansion-panel-header>
-            <div class="input-wraper">
-              <app-add-item [user]="userDashi"></app-add-item>
-            </div>
-          </mat-expansion-panel>
-        </mat-accordion>
         <div class="list-wraper">
           <app-table [user]="userDashi"> </app-table>
         </div>

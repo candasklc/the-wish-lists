@@ -13,16 +13,15 @@ export class RequestsService {
   djuliList: Wish[] = [];
   userDashi = 'dashi';
   userDjuli = 'djuli';
-  // private urlGet = '/all';
-  // private urlCategories = '/categories';
-  // private urlPost = '/add-wish';
-  // private urlDelete = '/delete/';
+  private urlGetByUser = '/list';
+  private urlCategories = '/categories';
+  private urlPost = '/add-wish';
+  private urlDelete = '/delete/';
 
-  private urlGet = 'http://Localhost:3000/all';
-  private urlGetByUser = 'http://Localhost:3000/list';
-  private urlCategories = 'http://Localhost:3000/categories';
-  private urlPost = 'http://Localhost:3000/add-wish';
-  private urlDelete = 'http://Localhost:3000/delete/';
+  // private urlGetByUser = 'http://Localhost:3000/list';
+  // private urlCategories = 'http://Localhost:3000/categories';
+  // private urlPost = 'http://Localhost:3000/add-wish';
+  // private urlDelete = 'http://Localhost:3000/delete/';
 
   constructor(private http: HttpClient) {}
 

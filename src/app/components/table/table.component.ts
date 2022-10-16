@@ -36,10 +36,14 @@ export class TableComponent implements OnInit {
     }
   }
 
-  fetchCategories(): void {
+  private fetchCategories(): void {
     this.http.getCategories().subscribe((data) => {
       this.categories = data;
     });
+  }
+
+  public addedObjectHandler(addedWish: Wish) {
+    this.wishList.push(addedWish);
   }
 
   private fetchList(): void {
