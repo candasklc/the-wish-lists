@@ -1,4 +1,10 @@
-import { Component, Input, OnInit } from '@angular/core';
+import {
+  Component,
+  Input,
+  OnChanges,
+  OnInit,
+  SimpleChanges,
+} from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogComponent } from 'src/app/components/dialog/dialog.component';
 import { Wish } from 'src/app/interfaces/wish';
@@ -10,15 +16,16 @@ import { RequestsService } from 'src/app/services/requests.service';
   styleUrls: ['./table.component.scss'],
 })
 export class TableComponent implements OnInit {
-  @Input() wishList: Wish[] = [];
+  @Input() user = '';
+  public wishList: Wish[] = [];
   public categories = [];
   info = '';
 
   constructor(private http: RequestsService, public dialog: MatDialog) {}
 
   ngOnInit(): void {
-    console.log(this.wishList);
     this.fetchCategories();
+    this.fetchList();
   }
 
   go(url: string): void {
@@ -32,6 +39,18 @@ export class TableComponent implements OnInit {
   fetchCategories(): void {
     this.http.getCategories().subscribe((data) => {
       this.categories = data;
+    });
+  }
+
+  private fetchList(): void {
+    this.http.getListByUser().subscribe((data) => {
+      if (this.user === 'dashi') {
+        this.wishList = data.dashi;
+        console.log(this.wishList);
+      } else if (this.user === 'djuli') {
+        this.wishList = data.djuli;
+        console.log(this.wishList);
+      }
     });
   }
 

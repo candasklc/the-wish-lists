@@ -10,15 +10,12 @@
               </mat-panel-description>
             </mat-expansion-panel-header>
             <div class="input-wraper">
-              <app-add-item
-                [user]="userDjuli"
-                (addedObjectChanged)="addedObjectHandler($event)"
-              ></app-add-item>
+              <app-add-item [user]="userDjuli"></app-add-item>
             </div>
           </mat-expansion-panel>
         </mat-accordion>
         <div class="list-wraper">
-          <app-table [wishList]="djuliList"></app-table>
+          <app-table [user]="userDjuli"></app-table>
         </div>
       </mat-tab>
       <mat-tab label="Dashi">
@@ -30,15 +27,12 @@
               </mat-panel-description>
             </mat-expansion-panel-header>
             <div class="input-wraper">
-              <app-add-item
-                [user]="userDashi"
-                (addedObjectChanged)="addedObjectHandler($event)"
-              ></app-add-item>
+              <app-add-item [user]="userDashi"></app-add-item>
             </div>
           </mat-expansion-panel>
         </mat-accordion>
         <div class="list-wraper">
-          <app-table [wishList]="dashiList"> </app-table>
+          <app-table [user]="userDashi"> </app-table>
         </div>
       </mat-tab>
     </mat-tab-group>

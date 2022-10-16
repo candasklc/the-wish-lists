@@ -33,12 +33,15 @@ export class AddItemComponent implements OnInit {
     this.form.patchValue({
       user: this.user,
     });
-    this.http.addWish(this.form.value).subscribe((data) => {
-      this.form.patchValue({
-        _id: data.insertedId,
+    if (this.form.value.link == '' || this.form.value.link.title == '') {
+      console.log('Empty wishes are meaningless.');
+    } else {
+      this.http.addWish(this.form.value).subscribe((data) => {
+        this.form.patchValue({
+          _id: data.insertedId,
+        });
       });
-      this.addedObjectChanged.emit(this.form.value);
-    });
+    }
   }
 
   private fetchCategories(): void {

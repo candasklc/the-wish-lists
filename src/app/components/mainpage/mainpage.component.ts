@@ -8,11 +8,6 @@ import { RequestsService } from 'src/app/services/requests.service';
   styleUrls: ['./mainpage.component.scss'],
 })
 export class MainpageComponent implements OnInit {
-  // ============================================== There is a bug. Mainpage component sends wrong list to table components. Last added objects have same id.
-
-  @Output() dashiList: Wish[] = [];
-  @Output() djuliList: Wish[] = [];
-
   @Output() userDashi = 'dashi';
   @Output() userDjuli = 'djuli';
 
@@ -21,24 +16,5 @@ export class MainpageComponent implements OnInit {
 
   constructor(private http: RequestsService) {}
 
-  ngOnInit(): void {
-    this.fetchLists();
-  }
-
-  private fetchLists(): void {
-    this.http.getAllWishes().subscribe((data) => {
-      this.dashiList = data.dashiList;
-      this.djuliList = data.djuliList;
-    });
-  }
-
-  addedObjectHandler(addedWish: Wish): void {
-    if (addedWish.link == '' || addedWish.title == '') {
-      console.log('Empty wishes are meaningless.');
-    } else if (addedWish.user.toLocaleLowerCase() == 'dashi') {
-      this.dashiList.push(addedWish);
-    } else if (addedWish.user.toLocaleLowerCase() == 'djuli') {
-      this.djuliList.push(addedWish);
-    }
-  }
+  ngOnInit(): void {}
 }

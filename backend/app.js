@@ -1,7 +1,7 @@
 const express = require("express");
 const app = express();
 const db = require("./config/db");
-const getAllWishes = require("./dbInteraction/getAllWishes");
+const getListByUser = require("./dbInteraction/getListByUser");
 const getCategories = require("./dbInteraction/getCategories");
 const addWish = require("./dbInteraction/addWish");
 const deleteWish = require("./dbInteraction/deleteWish");
@@ -26,8 +26,8 @@ app.get("/categories", (req, res) => {
 });
 
 // ------------- Db interaction
-app.get("/all", (req, res) => {
-  getAllWishes(req, res);
+app.get("/list", (req, res) => {
+  getListByUser(req, res);
 });
 
 app.post("/add-wish", (req, res) => {

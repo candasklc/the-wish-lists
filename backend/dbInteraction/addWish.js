@@ -5,6 +5,7 @@ function addWish(req, res) {
     title: req.body.title,
     link: req.body.link,
     user: req.body.user,
+    category: req.body.category,
   };
   collection.insertOne(newWish, (err, result) => {
     if (!err) {

@@ -1,6 +1,6 @@
 const { collection } = require("../models/wish");
 
-function getAllWishes(req, res) {
+function getListByUser(req, res) {
   collection.find({}).toArray((err, results) => {
     if (!err) {
       const dashiList = [];
@@ -12,7 +12,7 @@ function getAllWishes(req, res) {
           djuliList.push(x);
         }
       });
-      const allLists = { dashiList: dashiList, djuliList: djuliList };
+      const allLists = { dashi: dashiList, djuli: djuliList };
       res.send(allLists);
     } else {
       res.status(err);
@@ -20,4 +20,4 @@ function getAllWishes(req, res) {
   });
 }
 
-module.exports = getAllWishes;
+module.exports = getListByUser;
