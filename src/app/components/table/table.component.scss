@@ -1,8 +1,19 @@
+.add-item-panel {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 .wraper {
   display: flex;
   flex-direction: column-reverse;
   align-items: center;
   padding: 10px 0 10px 0;
+  .list-wrapper{
+    width: 100%;
+  }
+  mat-accordion{
+    width: 100%;
+  }
   .item-container {
     display: flex;
     width: 95%;

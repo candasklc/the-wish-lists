@@ -1,4 +1,10 @@
-import { Component, Input, OnInit } from '@angular/core';
+import {
+  Component,
+  Input,
+  OnChanges,
+  OnInit,
+  SimpleChanges,
+} from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogComponent } from 'src/app/components/dialog/dialog.component';
 import { Wish } from 'src/app/interfaces/wish';
@@ -10,12 +16,17 @@ import { RequestsService } from 'src/app/services/requests.service';
   styleUrls: ['./table.component.scss'],
 })
 export class TableComponent implements OnInit {
-  @Input() wishList: Wish[] = [];
+  @Input() user = '';
+  public wishList: Wish[] = [];
+  public categories = [];
   info = '';
 
   constructor(private http: RequestsService, public dialog: MatDialog) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.fetchCategories();
+    this.fetchList();
+  }
 
   go(url: string): void {
     if (url.includes('https')) {
@@ -23,6 +34,28 @@ export class TableComponent implements OnInit {
     } else {
       window.open('https://' + url, '_blank');
     }
+  }
+
+  private fetchCategories(): void {
+    this.http.getCategories().subscribe((data) => {
+      this.categories = data;
+    });
+  }
+
+  public addedObjectHandler(addedWish: Wish) {
+    this.wishList.push(addedWish);
+  }
+
+  private fetchList(): void {
+    this.http.getListByUser().subscribe((data) => {
+      if (this.user === 'dashi') {
+        this.wishList = data.dashi;
+        console.log(this.wishList);
+      } else if (this.user === 'djuli') {
+        this.wishList = data.djuli;
+        console.log(this.wishList);
+      }
+    });
   }
 
   openDialog(id: string) {

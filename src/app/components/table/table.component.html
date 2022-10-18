@@ -1,10 +1,37 @@
-<div class="wraper">
-  <div class="item-container" *ngFor="let x of wishList">
-    <mat-card class="title" (click)="go(x.link)">
-      <h4>{{ x.title }}</h4>
-    </mat-card>
-    <mat-card class="icon" (click)="openDialog(x._id)">
-      <span class="material-icons">clear</span>
-    </mat-card>
-  </div>
-</div>
+<mat-accordion>
+  <mat-expansion-panel hideToggle>
+    <mat-expansion-panel-header>
+      <mat-panel-description class="add-item-panel">
+        Add Wishes
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+    <div class="input-wraper">
+      <app-add-item
+        [user]="user"
+        (addedObjectChanged)="addedObjectHandler($event)"
+      ></app-add-item>
+    </div>
+  </mat-expansion-panel>
+</mat-accordion>
+
+<mat-accordion *ngFor="let x of categories">
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-description class="category-panel">
+        {{ x | titlecase }}
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+    <div class="wraper">
+      <div class="list-wrapper" *ngFor="let y of wishList">
+        <div *ngIf="x == y.category" class="item-container">
+          <mat-card class="title" (click)="go(y.link)">
+            <h4>{{ y.title }}</h4>
+          </mat-card>
+          <mat-card class="icon" (click)="openDialog(y._id)">
+            <span class="material-icons">clear</span>
+          </mat-card>
+        </div>
+      </div>
+    </div>
+  </mat-expansion-panel>
+</mat-accordion>

@@ -13,6 +13,7 @@ import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatRadioModule } from '@angular/material/radio';
 
 import { AppComponent } from './app.component';
 import { MainpageComponent } from './components/mainpage/mainpage.component';
@@ -30,7 +31,7 @@ import { MatExpansionModule } from '@angular/material/expansion';
     TableComponent,
     AddItemComponent,
     NavBarComponent,
-    DialogComponent
+    DialogComponent,
   ],
   imports: [
     BrowserModule,
@@ -48,9 +49,10 @@ import { MatExpansionModule } from '@angular/material/expansion';
     MatSlideToggleModule,
     MatDialogModule,
     MatExpansionModule,
-    MatFormFieldModule
+    MatFormFieldModule,
+    MatRadioModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 export class AppModule {}

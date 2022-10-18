@@ -5,10 +5,11 @@ import { RequestsService } from 'src/app/services/requests.service';
 @Component({
   selector: 'app-add-item',
   templateUrl: './add-item.component.html',
-  styleUrls: ['./add-item.component.scss']
+  styleUrls: ['./add-item.component.scss'],
 })
 export class AddItemComponent implements OnInit {
   @Input() user = '';
+  @Input() categories = [];
   @Output() addedObjectChanged: EventEmitter<Wish> = new EventEmitter();
   private reg = '(https?://)?([\\da-z.-]+)\\.([a-z.]{2,6})[/\\w .-]*/?'; // Url Validation
   public form = new FormGroup({
@@ -16,25 +17,38 @@ export class AddItemComponent implements OnInit {
     title: new FormControl('', Validators.required),
     link: new FormControl('', [
       Validators.required,
-      Validators.pattern(this.reg)
+      Validators.pattern(this.reg),
     ]),
-    image: new FormControl(''),
-    user: new FormControl('')
+    user: new FormControl(''),
+    category: new FormControl('', Validators.required),
   });
 
   constructor(private http: RequestsService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.fetchCategories();
+  }
 
   addItem(): void {
     this.form.patchValue({
-      user: this.user
+      user: this.user,
     });
-    this.http.addWish(this.form.value).subscribe(data => {
-      this.form.patchValue({
-        _id: data.insertedId
+    if (this.form.value.link == '' || this.form.value.link.title == '') {
+      console.log('Empty wishes are meaningless.');
+    } else {
+      this.http.addWish(this.form.value).subscribe((data) => {
+        this.form.patchValue({
+          _id: data.insertedId,
+        });
+        this.addedObjectChanged.emit(this.form.value);
+        this.form.reset();
       });
-      this.addedObjectChanged.emit(this.form.value);
+    }
+  }
+
+  private fetchCategories(): void {
+    this.http.getCategories().subscribe((data) => {
+      this.categories = data;
     });
   }
 
