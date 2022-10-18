@@ -1,5 +1,5 @@
 import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
 import { Wish } from 'src/app/interfaces/wish';
 import { RequestsService } from 'src/app/services/requests.service';
 @Component({
@@ -12,15 +12,15 @@ export class AddItemComponent implements OnInit {
   @Input() categories = [];
   @Output() addedObjectChanged: EventEmitter<Wish> = new EventEmitter();
   private reg = '(https?://)?([\\da-z.-]+)\\.([a-z.]{2,6})[/\\w .-]*/?'; // Url Validation
-  public form = new FormGroup({
-    _id: new FormControl(''),
-    title: new FormControl('', Validators.required),
-    link: new FormControl('', [
+  public form = new UntypedFormGroup({
+    _id: new UntypedFormControl(''),
+    title: new UntypedFormControl('', Validators.required),
+    link: new UntypedFormControl('', [
       Validators.required,
       Validators.pattern(this.reg),
     ]),
-    user: new FormControl(''),
-    category: new FormControl('', Validators.required),
+    user: new UntypedFormControl(''),
+    category: new UntypedFormControl('', Validators.required),
   });
 
   constructor(private http: RequestsService) {}

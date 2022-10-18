@@ -50,10 +50,8 @@ export class TableComponent implements OnInit {
     this.http.getListByUser().subscribe((data) => {
       if (this.user === 'dashi') {
         this.wishList = data.dashi;
-        console.log(this.wishList);
       } else if (this.user === 'djuli') {
         this.wishList = data.djuli;
-        console.log(this.wishList);
       }
     });
   }
