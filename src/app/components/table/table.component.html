@@ -5,7 +5,7 @@
         Add Wishes
       </mat-panel-description>
     </mat-expansion-panel-header>
-    <div class="input-wraper">
+    <div class="input-wrapper">
       <app-add-item
         [user]="user"
         (addedObjectChanged)="addedObjectHandler($event)"
@@ -18,10 +18,15 @@
   <mat-expansion-panel>
     <mat-expansion-panel-header>
       <mat-panel-description class="category-panel">
-        {{ x | titlecase }}
+        <div class="category-title">
+          {{ x | titlecase }}
+        </div>
+        <div *ngIf="itemCounter(x) !== 0" class="amount">
+          ( {{ itemCounter(x) }} )
+        </div>
       </mat-panel-description>
     </mat-expansion-panel-header>
-    <div class="wraper">
+    <div class="wrapper">
       <div class="list-wrapper" *ngFor="let y of wishList">
         <div *ngIf="x == y.category" class="item-container">
           <mat-card class="title" (click)="go(y.link)">

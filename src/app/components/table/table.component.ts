@@ -46,6 +46,11 @@ export class TableComponent implements OnInit {
     this.wishList.push(addedWish);
   }
 
+  public itemCounter(categoryName: string) {
+    return this.wishList.filter((item) => item.category === categoryName)
+      .length;
+  }
+
   private fetchList(): void {
     this.http.getListByUser().subscribe((data) => {
       if (this.user === 'dashi') {

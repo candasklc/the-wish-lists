@@ -3,7 +3,11 @@
   justify-content: center;
   align-items: center;
 }
-.wraper {
+.category-panel {
+  display: flex;
+  justify-content: space-between;
+}
+.wrapper {
   display: flex;
   flex-direction: column-reverse;
   align-items: center;
