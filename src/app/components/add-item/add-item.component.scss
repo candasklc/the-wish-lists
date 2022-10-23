@@ -1,8 +1,39 @@
+@media only screen and (max-width: 600px) {
+  .container {
+      display: flex;
+      justify-content: center;
+      padding: 0;
+  
+      .wrapper {
+        .form {
+          .form-field {
+            display: block;
+  
+            input {
+              width: 100%;
+            }
+          }
+          .category-container {
+            display: grid;
+            gap: 5px;
+            grid-template-columns: 1fr 1fr;
+            padding: 0 0 10px 0;
+          }
+        }
+        .addBtn {
+          background-color: rgb(62, 138, 62);
+          width: 100%;
+          color: whitesmoke;
+        }
+      }
+    }
+}
+
 .container {
   display: flex;
   justify-content: center;
+  padding: 0;
   .wrapper {
-    width: 80%;
     .form {
       .form-field {
         display: block;
@@ -12,12 +43,12 @@
       }
       .category-container{
         display: flex;
-        justify-content: space-evenly;
+        gap: 5px;
         padding: 0 0 10px 0;
       }
     }
     .addBtn {
-      background-color: rgb(40, 148, 40);
+      background-color: rgb(62, 138, 62);
       width: 100%;
       color: whitesmoke;
     }
